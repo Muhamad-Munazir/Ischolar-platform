@@ -1,0 +1,14 @@
+{
+  "name": "ischolar-final",
+  "version": "1.0.0",
+  "description": "A social media platform for researchers and students",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "MERN"
+  ],
+  "author": "Muhammad Munazir",
+  "license": "ISC"
+}

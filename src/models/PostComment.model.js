@@ -22,11 +22,4 @@ const PostCommentSchema = new Schema({
     }
 )
 
-
-
-
-
-
-
-
 export const PostComment = new mongoose.model("PostComment",PostCommentSchema)

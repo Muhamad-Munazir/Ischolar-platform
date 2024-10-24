@@ -23,10 +23,4 @@ const userProfilesSchema  = new Schema({
    {timestamps:true}
 )
 
-
-        
-
-
-
-
 export const UserProfile = mongoose.model("userProfile",userProfilesSchema)

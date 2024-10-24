@@ -48,7 +48,6 @@ const publicationSchema = new Schema({
       
 )
 
-
 export const Publication = mongoose.model("publication",publicationSchema)
 
 

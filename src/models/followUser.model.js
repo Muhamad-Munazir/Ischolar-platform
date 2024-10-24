@@ -27,6 +27,4 @@ const followUserSchema = new Schema({
         
 })
 
-
-
 export const followUser = new mongoose.model("followUser",followUserSchema)

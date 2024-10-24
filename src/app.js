@@ -2,6 +2,7 @@ import express from "express"
 import cors from "cors"
 import cookieParser from "cookie-parser"
 
+
 const app = express()
 
 app.use(cors({
@@ -21,7 +22,12 @@ app.use(express.static("public"))
 app.use(cookieParser())
 
 
+// Routes import
+import userRouter from './routes/user.routes.js'
 
+// routes declaration
+app.use("/api/v1/users",userRouter) // control will pass to user.router.js
+// url be like : https://localhost:PORT/api/v1/users/register
 
 
 export {app}

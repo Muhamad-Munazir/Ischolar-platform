@@ -18,7 +18,7 @@ app.use(express.json({limit:"15kb"}))
 app.use((express.urlencoded({extended:true,limit:"16kb"}))) // todo study this limit
 
 app.use(express.static("public"))
-
+   
 app.use(cookieParser())
 
 

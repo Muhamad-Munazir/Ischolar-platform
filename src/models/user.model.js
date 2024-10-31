@@ -4,14 +4,21 @@ import bcrypt from "bcrypt"
 
 
 const userSchema = new Schema({
+    username:{
+        type:string,
+        requires:true,
+        trim:true,
+        unique:true
+    },
     email:{
+
         type:String,
         required: true,
         unique: true,
         lowercase:true,
         trim:true
     },
-        Fullname:{
+     Fullname:{
         type:String,
         required: true,
         trim:true,
@@ -40,7 +47,7 @@ const userSchema = new Schema({
 userSchema.pre("save", async function(next){
 
     if(!this.isModified("password")) return next()
-    this.Password = bcrypt.hash(this.Password,8)
+    this.Password = await bcrypt.hash(this.Password,8)
     next()
 })
 

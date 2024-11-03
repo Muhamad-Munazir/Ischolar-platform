@@ -22,9 +22,10 @@ const followUserSchema = new Schema({
                 unique:true
             }
         ]
-
+    
     
         
-})
+    }
+)
 
 export const followUser = new mongoose.model("followUser",followUserSchema)

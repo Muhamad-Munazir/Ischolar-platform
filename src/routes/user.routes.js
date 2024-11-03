@@ -3,14 +3,14 @@ import { loginUser, logoutUser, RefreshAccessToken, registerUser } from "../cont
 
 const router = Router()
 
-router.route("/register").post(registerUser)   // registeUser.js will not be taken as its not a function
+router.route("/register").post(registerUser)   // registeUser.js will not be taken(in a high order function ) as its not a function
 
 
 router.route("/login").post(loginUser)
 
 //Secured routes
 router.route("/logout").post(verifyJWT,logoutUser)
-router.route("/refres-token").post(RefreshAccessToken)
+router.route("/refresh-token").post(RefreshAccessToken)
 
 
 

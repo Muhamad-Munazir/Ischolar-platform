@@ -3,12 +3,12 @@ const followUserSchema = new Schema({
     followed_by_user_id:{
         type: mongoose.Schema.Types.ObjectId, // user which is following
         ref: 'User',
-        required: true
+       // required: true
     },
     target_user_id:{
         type: mongoose.Schema.Types.ObjectId,  // user which is followed
         ref: 'User',
-        required: true
+        // required: true
     },
     followed_at:{
         type:Date,

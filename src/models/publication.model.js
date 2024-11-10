@@ -1,11 +1,21 @@
 import mongoose,{Schema} from "mongoose"
 
 const publicationSchema = new Schema({
-    
-        "publicationID": {
-          "type": "ObjectId",
-          "required": true,
-          "unique": true
+  
+        "userId":{
+          "type":Schema.Types.ObjectId,
+          "ref":"User",
+          "required":true
+        },
+
+        // "publicationID": {
+        //   "type": Schema.Types.ObjectId,
+        //   "required": true,
+        //   "unique": true
+        // },
+        "caption": { 
+          type: String, 
+          trim: true 
         },
         "title": {
           "type": "String",
@@ -20,14 +30,14 @@ const publicationSchema = new Schema({
           "ref": "User",
           "required": true
         },
-        "journal": {
-          "type": "String",
-          "required": true
-        },
-        "year": {
-          "type": "Number",
-          "required": true
-        },
+        // "journal": {
+        //   "type": "String",
+        //   "required": true
+        // },
+        // "year": {
+        //   "type": "Number",
+        //   "required": true
+        // },
         "doi": {
           "type": "String",
           "unique": true
@@ -36,8 +46,11 @@ const publicationSchema = new Schema({
           "type": ["String"],
           "default": []
         },
-        "fullTextUrl": {
+        "fileUrl": {
           "type": "String" // URL to the full text of the paper
+        },
+        "fileType":{
+          type:String
         }
      
    },

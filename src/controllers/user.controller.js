@@ -40,7 +40,7 @@ const registerUser = asyncHandler( async (req,res) => {
             check for user creation 
             return response
          */
-        const{Fullname,email,username} = req.body
+        const{Fullname,email,username,country} = req.body
 
 // to check every field one by one
         // if(Fullname === ""){
@@ -259,6 +259,78 @@ const updateAccountDetails = asyncHandler(async (req,res) =>{
 
 })
 
+const getUserPageProfile = asyncHandler(async(req,res) =>{
+    const {username} = req.params
+
+    if(!username?.trim()){
+        throw new apiError(400,"username is missing")
+    }
+
+    const page = await User.aggregate([
+        {
+            $match:{
+                username: username?.toLowerCase()
+            }
+        },
+        {
+            $lookup: {
+                from : "followUser",
+                localField : "_id",
+                foreignField: "page",
+                as: "followers"
+            }
+        },
+        {
+            $lookup:{
+
+                from: "followUser",
+                localField: "_id",
+                foreignField: "follower",
+                as: "followedTo/following"
+            }
+        },
+
+        {
+            $addFields:{
+                followersCount : {
+                    $size : "$followers",
+                },
+                
+                followingCount: {
+                    $size: "$followedTo/following"
+                },
+                isFollowed:{
+                    $cond:{
+                        if: {$in: [req.user?._id,"$followers.followed_by_user_id"]},
+                        then : true,
+                        else: false
+                    }
+                }
+            }
+        },
+
+        {
+            $project:{
+                Fullname : 1,
+                username : 1,
+                followersCount : 1,
+                followingCount:1,
+                isFollowed : 1,
+
+            }
+        }
+    ])
+
+    
+if(!page?.length){
+    throw new apiError(404,"Page does not exist")
+}
+
+return res
+.status(200)
+.json(new apiResponse(200,"User page fetched successfully"))
+
+})
 
 
 export {
@@ -268,5 +340,6 @@ export {
     RefreshAccessToken,
     changeCurrentPassword,
     getCurrentUser,
-    updateAccountDetails
+    updateAccountDetails,
+    getUserPageProfile
 }

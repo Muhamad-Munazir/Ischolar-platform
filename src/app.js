@@ -26,7 +26,7 @@ app.use(cookieParser())
 import userRouter from './routes/user.routes.js'
 
 // routes declaration
-app.use("/api/v1/users",userRouter) // control will pass to user.router.js
+app.use("/api/v1/users",userRouter) // control will pass to user.routes.js
 // url be like : https://localhost:PORT/api/v1/users/register
 
 

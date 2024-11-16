@@ -18,7 +18,15 @@ const communitypostSchema = new Schema({
         type:string,
         enum: ['public', 'private', 'followers-only'],
         default: 'public'
+    },
+    fileUrl : {
+        type: "String"
+    },
+    fileType: {
+        type: "String"
     }
+
+
 },  
     {
         timestamps:true

@@ -1,20 +1,21 @@
 import mongoose,{Schema} from 'mongoose'
 const followUserSchema = new Schema({
     followed_by_user_id:{
-        type: mongoose.Schema.Types.ObjectId, // user which is following
+        type: Schema.Types.ObjectId, // user which is following
         ref: 'User',
        // required: true
     },
     target_user_id:{
-        type: mongoose.Schema.Types.ObjectId,  // user which is followed
+        type: Schema.Types.ObjectId,  // user which is followed
         ref: 'User',
         // required: true
     },
-    followed_at:{
-        type:Date,
-        default: Date.now
-    }
+   
 },
+    {
+        timestamps:true
+    },
+
     {
         indexes:[
             {
@@ -28,4 +29,4 @@ const followUserSchema = new Schema({
     }
 )
 
-export const followUser = new mongoose.model("followUser",followUserSchema)
+export const followUser =  mongoose.model("followUser",followUserSchema)

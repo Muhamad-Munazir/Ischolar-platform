@@ -6,7 +6,7 @@ const PostCommentSchema = new Schema({
         ref: 'User',
        
     },
-    community_post_commented:{
+    user_id_of_community_post_commented:{
         type: Schema.Types.ObjectId,
         ref: 'Community'
     },

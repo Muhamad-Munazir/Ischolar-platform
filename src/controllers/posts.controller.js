@@ -38,7 +38,7 @@ const postUpload = asyncHandler(async (req,res) =>{
      try {
         const {caption,title} = req.body;
         
-        const newPost = new post({
+        const newPost = new newPost({
     
             userId : req.user._id,
             caption,
@@ -92,7 +92,7 @@ const publicationRemove = asyncHandler(async(req,res) =>{
          
 export {
     postUpload,
-    postRemove
+    publicationRemove
 } 
          
          
